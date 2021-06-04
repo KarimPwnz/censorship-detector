@@ -36,7 +36,7 @@ export async function isLocallyUp(url, context) {
 }
 
 // Inspired by eBay's port scanning, https://blog.nem.ec/2020/05/24/ebay-port-scanning/ (Dan Nemec)
-export function isIpLocallyUp(host, { timeout = 5000 } = {}) {
+export function isIpLocallyUp(host, { timeout = 10000 } = {}) {
     let upDeferred = new Deferred();
     let socket = new WebSocket(`wss://${host}`);
     socket.onerror = socket.onopen = () => upDeferred.resolve(true);
@@ -51,7 +51,7 @@ export async function isUp(url, context, host = null) {
     if (host) {
         reqUrl += `&host=${host}`;
     }
-    let result = await context.fetcher.fetch(reqUrl, { timeout: 10000 });
+    let result = await context.fetcher.fetch(reqUrl);
     let response = await result.response.json();
     if (response.error) {
         throw new Error("isUp check failed!");
