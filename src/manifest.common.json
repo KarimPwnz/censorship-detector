@@ -1,0 +1,12 @@
+{
+    "author": "Karim Rahal",
+    "name": "Censorship Detector",
+    "description": "Detect website censorship as you browse.",
+    "manifest_version": 2,
+    "version": "1.0.0",
+    "browser_action": {
+        "default_title": "Censorship Detector",
+        "default_icon": "./assets/img/icon-96.png",
+        "default_popup": "./popup.html"
+    }
+}

@@ -1,0 +1,11 @@
+{
+    "background": {
+        "scripts": ["./js/background.js"]
+    },
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "{0bfc32fc-9c50-4471-a91c-c374579acc5f}"
+        }
+    },
+    "permissions": ["<all_urls>", "webRequest", "webRequestBlocking", "dns"]
+}

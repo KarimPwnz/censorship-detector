@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="assets/css/popup.css" />
+        <title><%= htmlWebpackPlugin.options.title %></title>
+    </head>
+    <body>
+        <div id="main-menu" class="page current">
+            <div class="page__header">
+                <h1 class="title title--big title--white">
+                    Censorship Detector
+                </h1>
+                <h2 class="subtitle">Blocked Hosts</h2>
+            </div>
+            <p class="placeholder-text paragraph">Nothing detected so far.</p>
+            <div class="hosts page__content"></div>
+        </div>
+        <template id="host-summary-card">
+            <div class="host card">
+                <h1 class="host__name title"></h1>
+                <p class="host__summary paragraph"></p>
+                <a data-host="" class="see-details link-btn link-btn--front"
+                    >See Details</a
+                >
+            </div>
+        </template>
+        <template id="host-page">
+            <div class="host-page page hidden">
+                <a
+                    class="to-main-menu link-btn link-btn--back link-btn--big"
+                ></a>
+                <div class="page__header">
+                    <h1 class="host__name title title--big title--white"></h1>
+                    <h2 class="subtitle">Scan results</h2>
+                </div>
+                <div class="checks page__content"></div>
+            </div>
+        </template>
+        <template id="check-card">
+            <div class="check card">
+                <h1 class="check__name title"></h1>
+                <p class="check__description paragraph"></p>
+                <a
+                    class="check__learn-more link-btn link-btn--front"
+                    target="_blank"
+                    >Learn More</a
+                >
+            </div>
+        </template>
+        <% if (htmlWebpackPlugin.options.addBrowserPolyfill) { %>
+        <script
+            type="application/javascript"
+            src="js/browser-polyfill.min.js"
+        ></script>
+        <% } %>
+        <script type="application/javascript" src="js/popup.js"></script>
+    </body>
+</html>
