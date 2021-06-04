@@ -5,8 +5,8 @@ const { isLocallyUp, isUp } = require("./common");
 /**
  * Detect HTTPS filtering with the following steps:
  * 1. Verify site is objectively up over HTTPS
- * 2. Make sure that IP filtering nor DNS filtering checks fail
- * 3. Verify site is locally down over HTTPS
+ * 2. Make sure that neither IP filtering nor DNS filtering checks fail
+ * 3. Check if host locally down over HTTPS
  *
  * Shortcomings:
  * - Cannot detect HTTPS filtering if IP or DNS filtering exists
