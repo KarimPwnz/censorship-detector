@@ -1,6 +1,13 @@
 const { RESOLVERS, isLocallyUp } = require("./common");
 const { getHost } = require("../utils");
 
+function addPtrSuffix(ip) {
+    if (ip.includes(":")) {
+        return ip + ".ip6.arpa";
+    }
+    return ip + ".in-addr.arpa";
+}
+
 /**
  * Based on OONI's nettests/ts-002-dns-consistency spec
  * (https://github.com/ooni/spec/blob/master/nettests/ts-002-dns-consistency.md)
@@ -37,11 +44,6 @@ module.exports = {
             context.webRequestDetails.ip ||
             (await context.localResolver.resolve(host));
 
-        // Get ptr records
-        let localPtrRecordPromise = context.dohResolver.resolve(localIp, {
-            type: "PTR",
-        });
-
         // Start control answers resolution promise
         let controlARecordsPromise = context.dohResolver.resolve(host);
 
@@ -50,11 +52,21 @@ module.exports = {
             return false;
         }
 
-        let localPtrRecord = (await localPtrRecordPromise)[0];
+        // Get PTR record
+        let localPtrRecordAnswer = localIp
+            ? await context.dohResolver.resolve(addPtrSuffix(localIp), {
+                  type: "PTR",
+              })
+            : [];
+        let localPtrRecord = localPtrRecordAnswer.length
+            ? localPtrRecordAnswer[0].data
+            : null;
+
+        // Get A records
         let controlARecords = await controlARecordsPromise;
 
         // Check if NXDomain
-        if (!controlARecords.length && !ip) {
+        if (!controlARecords.length && !localIp) {
             return false;
         }
 
@@ -65,17 +77,21 @@ module.exports = {
                     continue;
                 }
                 // Check if IP matches
-                if (answer.data == localIp) {
+                if (answer.data === localIp) {
                     return false;
                 }
-                // Check if ptr records match for control IP
-                let controlPtrRecord = (
-                    await context.dohResolver.resolve(answer.data, {
+                // Check if ptr records match
+                let controlPtrRecordAnswer = await context.dohResolver.resolve(
+                    addPtrSuffix(answer.data),
+                    {
                         server,
                         type: "PTR",
-                    })
-                )[0];
-                if (controlPtrRecord == localPtrRecord) {
+                    }
+                );
+                if (
+                    controlPtrRecordAnswer.length &&
+                    controlPtrRecordAnswer[0].data === localPtrRecord
+                ) {
                     return false;
                 }
             }
