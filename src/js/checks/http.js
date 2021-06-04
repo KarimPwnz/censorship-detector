@@ -5,7 +5,7 @@ const { getHost } = require("../utils");
  * Detect HTTP (host header) filtering with the following steps:
  * 1. Verify http://foobar.com is locally up
  * 2. Send a request to http://foobar.com with the host header set to target host
- * 3. If the request is fails (via a connection error), then the host header is filtered
+ * 3. If the request fails (via a connection error), then the host header is filtered
  */
 module.exports = {
     async onErrorOccurred(context) {
