@@ -4,6 +4,9 @@
     "description": "Detect website censorship as you browse.",
     "manifest_version": 2,
     "version": "1.0.0",
+    "icons": {
+        "96": "./assets/img/icon-96.png"
+    },
     "browser_action": {
         "default_title": "Censorship Detector",
         "default_icon": "./assets/img/icon-96.png",
