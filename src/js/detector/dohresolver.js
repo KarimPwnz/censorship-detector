@@ -13,7 +13,7 @@ export default class DoHResolver {
         {
             server = "https://dns9.quad9.net/dns-query",
             type = "A",
-            timeout = 6000,
+            timeout = 10000,
         } = {}
     ) {
         if (isIp(host)) {

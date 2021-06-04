@@ -3,13 +3,12 @@ import Deferred from "../deferred";
 import { browserInfo } from "./global";
 
 export class FirefoxLocalResolver {
-    resolve(host) {
+    resolve(host, { timeout = 10000 } = {}) {
         let ipDeferred = new Deferred();
         browser.dns
             .resolve(host)
             .then((res) => ipDeferred.resolve(res.addresses[0]));
-        // Hard-code timeout since dns.resolve has long timeout on Firefox
-        setTimeout(() => ipDeferred.resolve(null), 6000);
+        setTimeout(() => ipDeferred.resolve(null), timeout);
         return ipDeferred.promise;
     }
 }

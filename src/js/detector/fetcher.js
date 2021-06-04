@@ -23,7 +23,7 @@ export default class Fetcher {
         url,
         {
             options = {},
-            timeout = 6000,
+            timeout = 10000,
             captureDetails = false,
             bypassCache = false,
         } = {}
