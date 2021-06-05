@@ -7,13 +7,11 @@ export default class Checker {
     }
 
     check(check, event, { bypassCache = false } = {}) {
-        // Check cache
         let cachedCheck = this.cacheStore.get(check.meta.name);
-        if (!bypassCache && cachedCheck[event]) {
-            return cachedCheck[event];
+        // Check if bypass cache or cache does not exist
+        if (bypassCache || !cachedCheck[event]) {
+            cachedCheck[event] = check[event](this.context);
         }
-        // Run and cache check
-        cachedCheck[event] = check[event](this.context);
         return cachedCheck[event];
     }
 }
