@@ -32,7 +32,6 @@ export class ChromeLocalResolver {
         let ipDeferred = new Deferred();
 
         if (host.includes('"')) {
-            // TODO: create custom error
             return ipDeferred.reject(
                 new Error(
                     `${host} contains a double quote and cannot be passed into PAC script for security reasons.`
