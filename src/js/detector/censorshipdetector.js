@@ -3,7 +3,7 @@ import { defaultChecks } from "./global";
 
 export default class CensorshipDetector extends EventTarget {
     constructor({
-        webRequestEvents = ["onCompleted", "onErrorOccurred"],
+        webRequestEvents = ["onErrorOccurred"],
         checks = defaultChecks,
         urls = ["<all_urls>"],
     } = {}) {
