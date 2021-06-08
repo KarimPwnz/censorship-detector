@@ -1,5 +1,3 @@
-import { isObjEmpty } from "./utils";
-
 export let infoStore = {
     set(key, info, json = true) {
         if (json) {
@@ -20,19 +18,26 @@ export let infoStore = {
 };
 
 export let hostsIndex = {
-    index: infoStore.get("hostsIndex") || {},
+    index: infoStore.get("hostsIndex").length
+        ? new Map(infoStore.get("hostsIndex"))
+        : new Map(),
     isEmpty() {
-        return isObjEmpty(this.index);
+        return this.index.size === 0;
     },
     add(host, successes) {
-        this.remove(host);
-        this.index[host] = successes.map((check) => check.name);
-        return infoStore.set("hostsIndex", this.index);
+        this.delete(host); // to change order
+        this.index.set(
+            host,
+            successes.map((check) => check.name)
+        );
+        this._save();
     },
-    remove(host) {
-        if (this.index.hasOwnProperty(host)) {
-            delete this.index[host];
-        }
+    delete(host) {
+        this.index.delete(host);
+        this._save();
+    },
+    _save() {
+        return infoStore.set("hostsIndex", [...this.index.entries()]);
     },
 };
 

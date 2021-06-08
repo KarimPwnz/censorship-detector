@@ -104,7 +104,7 @@ function addSuccessHost(host, successes) {
 if (!hostsIndex.isEmpty()) {
     let index = hostsIndex.index;
     document.querySelector("#main-menu .placeholder-text").remove();
-    for (let [host, successes] of Object.entries(index)) {
+    for (let [host, successes] of index) {
         addSuccessHost(host, successes);
     }
     badge.reset();
