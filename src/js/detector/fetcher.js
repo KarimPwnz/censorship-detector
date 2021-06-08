@@ -1,11 +1,10 @@
-import { SimpleCacheStore } from "./simplecachestore";
 import { fetchTimeout, rand, isObjEmpty } from "../utils";
 import Deferred from "../deferred";
 import { browserInfo } from "./global";
 
 export default class Fetcher {
     constructor() {
-        this.cacheStore = new SimpleCacheStore();
+        this.cacheStore = new Map();
     }
 
     _getResultObject() {
@@ -28,7 +27,7 @@ export default class Fetcher {
             bypassCache = false,
         } = {}
     ) {
-        let cacheKey = SimpleCacheStore.getObjectCacheKey(
+        let cacheKey = JSON.stringify(
             url,
             options,
             captureDetails,
