@@ -25,7 +25,7 @@ export let hostsIndex = {
         return this.index.size === 0;
     },
     add(host, successes) {
-        this.delete(host); // to change order
+        this.index.delete(host); // to change order
         this.index.set(
             host,
             successes.map((check) => check.name)
