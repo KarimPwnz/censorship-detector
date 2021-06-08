@@ -1,13 +1,13 @@
 export let storage = {
-    set(key, value, jsonValue = true) {
-        if (jsonValue) {
+    set(key, value, isJson = true) {
+        if (isJson) {
             value = JSON.stringify(value);
         }
         return localStorage.setItem(key, value);
     },
-    get(key, jsonValue = true) {
+    get(key, isJson = true) {
         let value = localStorage.getItem(key);
-        if (jsonValue) {
+        if (isJson) {
             value = JSON.parse(value);
         }
         return value;
