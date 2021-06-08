@@ -1,5 +1,5 @@
 import CensorshipDetector from "./detector/censorshipdetector";
-import { infoStore, hostsIndex, badge } from "./popup-background-common";
+import { storage, hostsIndex, badge } from "./popup-background-common";
 
 function run() {
     badge.init();
@@ -7,7 +7,7 @@ function run() {
     let detector = new CensorshipDetector();
     detector.addEventListener("checksEnded", (e) => {
         if (e.detail.successes.length) {
-            infoStore.set(e.detail.host, {
+            storage.set(e.detail.host, {
                 status: "checksEnded",
                 successes: e.detail.successes,
             });

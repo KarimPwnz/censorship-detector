@@ -1,4 +1,4 @@
-import { infoStore, hostsIndex, badge } from "./popup-background-common";
+import { storage, hostsIndex, badge } from "./popup-background-common";
 
 // Details of checks
 
@@ -18,7 +18,7 @@ function setBackListener(hostPage) {
 }
 
 function addDetails(host) {
-    let info = infoStore.get(host);
+    let info = storage.get(host);
     let hostPageT = document.getElementById("host-page");
     let hostPage = hostPageT.content.cloneNode(true);
 

@@ -1,16 +1,16 @@
-export let infoStore = {
-    set(key, info, json = true) {
-        if (json) {
-            info = JSON.stringify(info);
+export let storage = {
+    set(key, value, jsonValue = true) {
+        if (jsonValue) {
+            value = JSON.stringify(value);
         }
-        return localStorage.setItem(key, info);
+        return localStorage.setItem(key, value);
     },
-    get(key, json = true) {
-        let data = localStorage.getItem(key);
-        if (json) {
-            data = JSON.parse(data);
+    get(key, jsonValue = true) {
+        let value = localStorage.getItem(key);
+        if (jsonValue) {
+            value = JSON.parse(value);
         }
-        return data;
+        return value;
     },
     has(key) {
         return Boolean(localStorage.getItem(key));
@@ -18,8 +18,8 @@ export let infoStore = {
 };
 
 export let hostsIndex = {
-    index: infoStore.get("hostsIndex").length
-        ? new Map(infoStore.get("hostsIndex"))
+    index: storage.get("hostsIndex").length
+        ? new Map(storage.get("hostsIndex"))
         : new Map(),
     isEmpty() {
         return this.index.size === 0;
@@ -37,7 +37,7 @@ export let hostsIndex = {
         this._save();
     },
     _save() {
-        return infoStore.set("hostsIndex", [...this.index.entries()]);
+        return storage.set("hostsIndex", [...this.index.entries()]);
     },
 };
 
@@ -46,14 +46,14 @@ export let badge = {
         browser.browserAction.setBadgeBackgroundColor({ color: "#e1a8c0" });
     },
     updateCount() {
-        let count = infoStore.get("badgeCount", false) || 0;
-        infoStore.set("badgeCount", ++count, false);
+        let count = storage.get("badgeCount", false) || 0;
+        storage.set("badgeCount", ++count, false);
         browser.browserAction.setBadgeText({
             text: count.toString(),
         });
     },
     reset() {
-        infoStore.set("badgeCount", 0, false);
+        storage.set("badgeCount", 0, false);
         browser.browserAction.setBadgeText({
             text: "",
         });
