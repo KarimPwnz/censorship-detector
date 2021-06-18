@@ -23,7 +23,8 @@ function addDetails(host) {
     let hostPage = hostPageT.content.cloneNode(true);
 
     // Set host name
-    hostPage.querySelector(".host__name").innerText = host;
+    let hostName = hostPage.querySelector(".host__name");
+    hostName.innerText = hostName.title = host;
 
     // Set checks
     let hostPageChecks = hostPage.querySelector(".checks");
@@ -31,7 +32,8 @@ function addDetails(host) {
     for (let check of info.successes) {
         let checkResult = checkResultT.content.cloneNode(true);
         // Set check name
-        checkResult.querySelector(".check__name").innerText = check.name;
+        let checkName = checkResult.querySelector(".check__name");
+        checkName.innerText = checkName.title = check.name;
 
         // Set check description
         checkResult.querySelector(".check__description").innerText =
@@ -87,7 +89,8 @@ function addSuccessHost(host, successes) {
     let hostSummary = hostSummaryT.content.cloneNode(1);
 
     // Set host name
-    hostSummary.querySelector(".host__name").innerText = host;
+    let hostName = hostSummary.querySelector(".host__name");
+    hostName.innerText = hostName.title = host;
 
     // Set host summary
     hostSummary.querySelector(
