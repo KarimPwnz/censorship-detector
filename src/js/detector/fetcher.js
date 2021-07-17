@@ -45,7 +45,7 @@ export default class Fetcher {
     }
 
     _parseResult(result) {
-        result = Object.assign({}, result); // clone result
+        result = { ...result }; // clone result
         if (result.response) {
             result.response = result.response.clone(); // clone Response object
         }
@@ -54,7 +54,7 @@ export default class Fetcher {
 
     async _internalFetch(url, { options, timeout, captureDetails } = {}) {
         let result = this._getResultObject();
-        let headers = Object.assign({}, options.headers); // copy headers
+        let headers = { ...options.headers }; // copy headers
         let listeners = [];
         if (captureDetails || !isObjEmpty(headers)) {
             // Replace headers in options with x-censorship-detector identifier header
@@ -126,7 +126,7 @@ export default class Fetcher {
 
     _setRequestHeaders(newHeaders, requestHeaders) {
         // Change headers
-        newHeaders = Object.assign({}, newHeaders); // copy headers
+        newHeaders = { ...newHeaders }; // copy headers
         for (let header of requestHeaders) {
             if (newHeaders[header.name]) {
                 header.value = newHeaders[header.name];
