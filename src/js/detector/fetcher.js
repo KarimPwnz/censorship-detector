@@ -35,7 +35,7 @@ export default class Fetcher {
         );
         // Check cache
         if (!bypassCache && this.cacheStore.has(cacheKey)) {
-            return this._parseResult(await this.cacheStore.get(cacheKey));
+            return this._parseResult(this.cacheStore.get(cacheKey));
         }
         // Fetch
         let promise = this._internalFetch(url, {
