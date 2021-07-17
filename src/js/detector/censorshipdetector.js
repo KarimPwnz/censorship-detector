@@ -14,7 +14,7 @@ export default class CensorshipDetector extends EventTarget {
         this._listeners = {};
     }
 
-    async start() {
+    start() {
         for (let event of this.webRequestEvents) {
             if (!this._listeners.hasOwnProperty(event)) {
                 this._listeners[event] =
@@ -26,7 +26,7 @@ export default class CensorshipDetector extends EventTarget {
         }
     }
 
-    async stop() {
+    stop() {
         for (let [event, listener] of Object.entries(this._listeners)) {
             browser.webRequest[event].removeListener(listener);
         }
