@@ -27,12 +27,7 @@ export default class Fetcher {
             bypassCache = false,
         } = {}
     ) {
-        let cacheKey = JSON.stringify(
-            url,
-            options,
-            captureDetails,
-            timeout
-        );
+        let cacheKey = JSON.stringify(url, options, captureDetails, timeout);
         // Check cache
         if (!bypassCache && this.cacheStore.has(cacheKey)) {
             return this._parseResult(this.cacheStore.get(cacheKey));
