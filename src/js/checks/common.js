@@ -40,8 +40,8 @@ export function isIpLocallyUp(host, { timeout = 10000 } = {}) {
     let upDeferred = new Deferred();
     let socket = new WebSocket(`wss://${host}`);
     socket.onerror = socket.onopen = () => upDeferred.resolve(true);
-    let timeoutObj = setTimeout(() => upDeferred.resolve(false), timeout);
-    return upDeferred.promise.finally(() => clearTimeout(timeoutObj));
+    setTimeout(() => upDeferred.resolve(false), timeout);
+    return upDeferred.promise;
 }
 
 export async function isUp(url, context, host = null) {
