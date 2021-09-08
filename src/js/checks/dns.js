@@ -102,7 +102,7 @@ module.exports = {
     meta: {
         name: "DNS Filtering",
         description:
-            "Qui irure anim incididunt aliqua aliquip excepteur ea culpa. Esse amet dolor enim et enim pariatur irure elit aute ex consectetur. Labore ex voluptate deserunt cillum dolore veniam irure exercitation nulla.", // TODO
+            "DNS converts domain names to IP addresses through a DNS resolver. In many cases, routers default to the DNS resolver of your internet service provider (ISP), or any other potential censor on your network. Currently, such a censor is detecting the website you're visiting and blocking it. DNS filtering can be bypassed by setting a custom DNS resolver, like Cloudflare's `1.1.1.1`.",
         learnMore: "https://google.com", // TODO
     },
 };
