@@ -1,6 +1,6 @@
 {
     "name": "censorship-detector",
-    "description": "Detect website censorship as you browse.",
+    "description": "A browser extension to detect website censorship as you surf.",
     "author": "Karim Rahal",
     "license": "MIT",
     "version": "1.0.0",
