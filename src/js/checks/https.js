@@ -36,7 +36,7 @@ module.exports = {
     meta: {
         name: "HTTPS Filtering",
         description:
-            "Cillum est nisi excepteur aliquip ullamco nisi cillum consequat nostrud voluptate quis non laboris excepteur. Consequat tempor proident quis labore amet elit. Ullamco aute commodo officia do duis dolor. Labore ipsum Lorem esse eiusmod fugiat est dolore.", // TODO
+            "HTTPS establishes a secure connection between yourself and the website. Unfortunately, its handshake exposes to the censor the website you are communicating with. To bypass this censorship method, you can use encrypted SNI (ESNI), which is supported by browsers such as Firefox Extended Release.",
         learnMore: "https://google.com", // TODO
     },
 };
