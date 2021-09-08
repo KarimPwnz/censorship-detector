@@ -40,7 +40,7 @@ module.exports = {
     meta: {
         name: "IP/TCP Filtering",
         description:
-            "Lorem officia aute dolore voluptate consequat laborum sint. Laboris excepteur ea sint dolore minim ipsum. Laboris quis irure irure deserunt eiusmod ullamco consequat in eu aliquip et. Sit reprehenderit exercitation commodo irure. Consequat officia nostrud cillum laborum id. Culpa in aliquip cupidatat deserunt ex sit consectetur quis. Eu Lorem proident ipsum aute nisi.", // TODO
+            "Your browser communicates to the website using its IP address. However, for your data to reach the IP address, it is going through a blocking censor on your network, possibly your internet service provider (ISP). This can be circumvented by using a VPN or proxy.",
         learnMore: "https://google.com", // TODO
     },
 };
