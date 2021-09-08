@@ -32,7 +32,7 @@ module.exports = {
     meta: {
         name: "HTTP Filtering",
         description:
-            "Elit amet aliquip laboris tempor aliqua. Dolore esse quis est proident aute Lorem ipsum dolore anim magna officia. Lorem in aute sit ipsum nostrud. Consectetur minim ex cillum incididunt reprehenderit nulla cillum qui quis. Voluptate nisi deserunt Lorem fugiat.", // TODO
+            "You're communicating to the website using only HTTP, which sends data in plaintext. As such, a censor on your network is detecting the website name and is blocking the HTTP request. To access the site, use the HTTPS protocol or connect to a VPN.",
         learnMore: "https://google.com", // TODO
     },
 };
