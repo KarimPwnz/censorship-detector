@@ -30,18 +30,18 @@ export default class Fetcher {
         let cacheKey = JSON.stringify(url, options, captureDetails, timeout);
         // Check cache
         if (!bypassCache && this.cacheStore.has(cacheKey)) {
-            return this._parseResult(this.cacheStore.get(cacheKey));
+            return this._parseResult(await this.cacheStore.get(cacheKey));
         }
         // Fetch
-        let promise = this._internalFetch(url, {
+        let fetchPromise = this._internalFetch(url, {
             options,
             timeout,
             captureDetails,
         });
         // Save fetch promise in cache
-        this.cacheStore.set(cacheKey, promise);
+        this.cacheStore.set(cacheKey, fetchPromise);
         // Return result
-        return this._parseResult(await promise);
+        return this._parseResult(await fetchPromise);
     }
 
     _parseResult(result) {
