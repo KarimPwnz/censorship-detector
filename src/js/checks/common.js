@@ -11,6 +11,7 @@ export const RESOLVERS = [
 export const CONNECTION_ERRORS = new Set(
     browserInfo.name == "firefox"
         ? [
+              "NS_ERROR_UNKNOWN_HOST",
               "NS_ERROR_NET_RESET",
               "NS_BINDING_ABORTED",
               "NS_ERROR_NET_TIMEOUT",
