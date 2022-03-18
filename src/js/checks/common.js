@@ -12,17 +12,15 @@ export const CONNECTION_ERRORS = new Set(
     browserInfo.name == "firefox"
         ? [
               "NS_ERROR_UNKNOWN_HOST",
+              "NS_ERROR_CONNECTION_REFUSED",
               "NS_ERROR_NET_RESET",
-              "NS_BINDING_ABORTED",
-              "NS_ERROR_NET_TIMEOUT",
-              "NS_ERROR_NET_ON_TRANSACTION_CLOSE",
-              "NS_ERROR_NET_ON_TLS_HANDSHAKE_ENDED",
+              "NS_ERROR_NET_TIMEOUT"
           ]
         : [
               "net::ERR_NAME_NOT_RESOLVED",
-              "net::ERR_ABORTED",
-              "net::ERR_CONNECTION_CLOSED",
+              "net::ERR_CONNECTION_REFUSED",
               "net::ERR_TIMED_OUT",
+              "net::ERR_CONNECTION_RESET",
               "net::ERR_CONNECTION_TIMED_OUT",
               "net::ERR_ADDRESS_UNREACHABLE",
           ]
