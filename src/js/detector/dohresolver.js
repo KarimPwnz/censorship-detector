@@ -11,7 +11,7 @@ export default class DoHResolver {
     async resolve(
         host,
         {
-            server = "https://dns9.quad9.net/dns-query",
+            server = "https://cloudflare-dns.com/dns-query",
             type = "A",
             timeout = 10000,
         } = {}
