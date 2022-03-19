@@ -35,7 +35,7 @@ export default class ChecksListenerCreator {
      *    4. (Asynchronously) If check fails, dispatch "checkFail"
      * 6. Dispatch list of succeeded checks via "checksEnded"
      * 
-     * For the data in the dispatched event, refer to [CensorshipDetector's documentation]{@link censorshipdetector.js}
+     * For the data in the dispatched events, refer to [CensorshipDetector's documentation]{@link censorshipdetector.js}
      * 
      * @param {webRequestEvent} webRequestEvent 
      */
