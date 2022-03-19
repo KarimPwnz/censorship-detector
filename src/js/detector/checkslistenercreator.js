@@ -4,7 +4,7 @@ import LFUCache from "@akashbabu/lfu-cache";
 import { getHost } from "../utils";
 
 /**
- * Creates webRequestEvent listeners which run checks and report back to an EventTarget. Hosts are put in probation if they have already been ran (per a LFU policy) or are invalid
+ * Creates webRequestEvent listeners which run checks and reports back to an EventTarget. Hosts are put in probation if they have already been ran (per a LFU policy) or are invalid
  * 
  * Refer to [CensorshipDetector's documentation]{@link censorshipdetector.js} for the list of events dispatched
  * 
