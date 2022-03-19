@@ -64,7 +64,7 @@ export class ChromeLocalResolver {
 
     _createPACScript(id, host) {
         // Escape host to prevent arbitrary code execution in script
-        host = host.replaceAll("\"", "\\x22").replaceAll("\\", "\\x5c");
+        host = host.replaceAll("\\", "\\x5c").replaceAll("\"", "\\x22");
         return `function FindProxyForURL(url, host) {
             if (host == "${this._getIdHost(id)}") {
                 throw "${id} " + dnsResolve("${host}");
