@@ -8,7 +8,7 @@ import { defaultChecks } from "./global";
  * - "checksListenerRan" when the listener is run
  * - "hostProbation" if a host is currently in probation (recently/being scanned or blacklisted/invalid)
  * - "checksStarted" when the checks start
- * - "checkRun" for every check that runs
+ * - "checkStart" for every check that runs
  * - "checkSuccess" when a check succeeds (returns true)
  * - "checkFail" when a check fails (returns false)
  * - "checksEnded" when all the checks have ended

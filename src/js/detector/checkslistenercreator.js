@@ -23,6 +23,20 @@ export default class ChecksListenerCreator {
     /**
      * Create a listener for a webRequestEvent
      * 
+     * The listener will go through the following steps:
+     * 1. Dispatch "checksListenerRan"
+     * 2. Check if a host is in probation and dispatch "hostProbation"
+     * 3. Create a Context object to get a Checker
+     * 4. Dispatch "checksStarted"
+     * 5. For each check:
+     *    1. Verify that the check can run on the webRequestEvent and dispatch "checkStart"
+     *    2. Run the check on the webRequestEvent using the Context Checker
+     *    3. (Asynchronously) If check succeeds, add to list of succeeded checks and dispatch "checkSuccess"
+     *    4. (Asynchronously) If check fails, dispatch "checkFail"
+     * 6. Dispatch list of succeeded checks via "checksEnded"
+     * 
+     * For the data in the dispatched event, refer to [CensorshipDetector's documentation]{@link censorshipdetector.js}
+     * 
      * @param {webRequestEvent} webRequestEvent 
      */
     create(webRequestEvent) {
@@ -67,7 +81,7 @@ export default class ChecksListenerCreator {
                     continue;
                 }
                 this.eventTarget.dispatchEvent(
-                    new CustomEvent("checkRun", {
+                    new CustomEvent("checkStart", {
                         detail: { ...eventDetail, check: check.meta },
                     })
                 );
