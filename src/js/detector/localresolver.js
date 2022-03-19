@@ -28,7 +28,7 @@ export class FirefoxLocalResolver {
  *
  */
 export class ChromeLocalResolver {
-    resolve(host) {
+    resolve(host, { timeout = 10000 } = {}) {
         let ipDeferred = new Deferred();
 
         // Set onProxyError listener
@@ -52,6 +52,9 @@ export class ChromeLocalResolver {
 
         // Send request
         fetch(`https://${this._getIdHost(id)}/`).catch((_) => {});
+
+        // Start timeout
+        setTimeout(() => ipDeferred.resolve(null), timeout);
 
         return ipDeferred.promise.finally(() =>
             browser.proxy.onProxyError.removeListener(listener)
