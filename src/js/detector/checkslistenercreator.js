@@ -3,6 +3,14 @@ import { hasIgnoredOrigin } from "./global";
 import LFUCache from "@akashbabu/lfu-cache";
 import { getHost } from "../utils";
 
+/**
+ * Creates webRequestEvent listeners which run checks and report back to an EventTarget. Hosts are put in probation if they have already been ran (per a LFU policy) or are invalid
+ * 
+ * Refer to [CensorshipDetector's documentation]{@link censorshipdetector.js} for the list of events dispatched
+ * 
+ * @param {EventTarget} eventTarget - the EventTarget to report back to
+ * @param {[Check]} checks - the checks to run
+ */
 export default class ChecksListenerCreator {
     constructor(eventTarget, checks) {
         this.eventTarget = eventTarget;
@@ -12,6 +20,11 @@ export default class ChecksListenerCreator {
         });
     }
 
+    /**
+     * Create a listener for a webRequestEvent
+     * 
+     * @param {webRequestEvent} webRequestEvent 
+     */
     create(webRequestEvent) {
         return (webRequestDetails) => {
             let eventDetail = {
