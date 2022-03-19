@@ -1,7 +1,7 @@
 # Censorship Detector Extension
 
-A browser extension to detect website censorship and the censorship methods used.
-
+A browser extension to detect website censorship methods as you surf.
+ 
 ![Example screenshot of the extension](./misc/extension.png)
 
 ## Demo
