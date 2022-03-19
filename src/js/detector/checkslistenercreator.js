@@ -33,7 +33,7 @@ export default class ChecksListenerCreator {
                 this.hostsStore.get(host)
             ) {
                 this.eventTarget.dispatchEvent(
-                    new CustomEvent("inProbation", { detail: eventDetail })
+                    new CustomEvent("hostProbation", { detail: eventDetail })
                 );
                 return;
             }
@@ -54,7 +54,7 @@ export default class ChecksListenerCreator {
                     continue;
                 }
                 this.eventTarget.dispatchEvent(
-                    new CustomEvent("runCheck", {
+                    new CustomEvent("checkRun", {
                         detail: { ...eventDetail, check: check.meta },
                     })
                 );
