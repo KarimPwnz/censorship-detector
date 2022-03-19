@@ -31,14 +31,6 @@ export class ChromeLocalResolver {
     resolve(host) {
         let ipDeferred = new Deferred();
 
-        if (host.includes('"')) {
-            return ipDeferred.reject(
-                new Error(
-                    `${host} contains a double quote and cannot be passed into PAC script for security reasons.`
-                )
-            );
-        }
-
         // Set onProxyError listener
         let id = rand();
         let listener = this._getErrorCallback(id, ipDeferred);
@@ -71,6 +63,8 @@ export class ChromeLocalResolver {
     }
 
     _createPACScript(id, host) {
+        // Escape host to prevent arbitrary code execution in script
+        host = host.replaceAll("\"", "\\x22").replaceAll("\\", "\\x5c");
         return `function FindProxyForURL(url, host) {
             if (host == "${this._getIdHost(id)}") {
                 throw "${id} " + dnsResolve("${host}");
