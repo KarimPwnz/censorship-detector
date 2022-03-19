@@ -43,4 +43,4 @@ Apologies for having to build the extension and create a release! The extension 
 
   The releases will be located at `/releases/${BROWSER}/`. You can distribute those freely.
 
-3. To load into Firefox, browser to `about:debugging#/runtime/this-firefox` and load the release zip file via `Load Temporary Add-on...`. To load into a Chromium browser, unzip the file, browse to `chrome://extensions`, and `Load unpacked` the unzipped directory.
+3. To load into Firefox, browse to `about:debugging#/runtime/this-firefox` and load the Firefox release zip file via `Load Temporary Add-on...`. To load into a Chromium browser, unzip the Chrome file, browse to `chrome://extensions`, and `Load unpacked` the unzipped directory.
