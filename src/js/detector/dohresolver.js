@@ -3,6 +3,11 @@ import dnsPacket from "dns-packet";
 import base64url from "base64url";
 import isIp from "is-ip";
 
+/**
+ * A DNS-over-HTTPS resolver
+ * 
+ * Caches results via its Fetcher
+ */
 export default class DoHResolver {
     constructor(fetcher = null) {
         this.fetcher = fetcher || new Fetcher();
