@@ -24,7 +24,7 @@ import { defaultChecks } from "./global";
  * - check: the check metadata (name, description, learnMore)
  * 
  * Similarly, checksEnded will contain:
- * - success: a list of the metadata (name, description, learnMore) of successful checks
+ * - successes: a list of the metadata (name, description, learnMore) of successful checks
  * 
  * @param {[string]} [webRequestEvents=["onErrorOccurred"]] - the webRequest events which we want to listen to (https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/webRequest#events)
  * @param {[Check]} [checks=defaultChecks] - the checks to run upon our webRequest events
