@@ -21,9 +21,9 @@ The extension can currently detect DNS, HTTP, HTTPS, and IP filtering. It is bui
 There are multiple benefits to detecting censorship methods from a browser extension:
 
 - Browser extensions are easy to install
-- We can continuously detect censorship, since we see all browser traffic
-- We don't rely on a fixed set of URLs, allowing for ubiquitous censorship detection
-- Most importantly though, it is technically cool
+- We can continuously detect censorship, since the extension sees all browser traffic
+- The extension doesn't rely on a fixed set of URLs, allowing for ubiquitous censorship detection
+- It is technically cool
 
 ## Installation
 
@@ -35,7 +35,7 @@ Apologies for having to build the extension and create a release! The extension 
   $ npm run build
   ```
 
-2. Create a release:
+2. Create the releases:
 
   ```sh
   $ npm run release
