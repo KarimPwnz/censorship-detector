@@ -4,9 +4,9 @@ import { defaultChecks } from "./global";
 /**
  * The main CensorshipDetector driver
  * 
- * CensorshipDetector will dispatch the following events via the listeners created by ChecksListenerCreator:
+ * Once started, CensorshipDetector will dispatch the following events via the listeners created by ChecksListenerCreator:
  * - "checksListenerRan" when the listener is run
- * - "hostProbation" if a host is currently in probation (being scanned)
+ * - "hostProbation" if a host is currently in probation (recently/being scanned or blacklisted/invalid)
  * - "checksStarted" when the checks start
  * - "checkRun" for every check that runs
  * - "checkSuccess" when a check succeeds (returns true)
