@@ -4,7 +4,7 @@ import LFUCache from "@akashbabu/lfu-cache";
 import { getHost } from "../utils";
 
 export default class ChecksListenerCreator {
-    constructor(eventTarget, checks = []) {
+    constructor(eventTarget, checks) {
         this.eventTarget = eventTarget;
         this.checks = checks;
         this.hostsStore = new LFUCache({
