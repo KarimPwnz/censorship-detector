@@ -1,9 +1,10 @@
 import { rand } from "../utils";
 import Deferred from "../deferred";
 import { browserInfo } from "./global";
+import { DNS_TIMEOUT } from "./global";
 
 export class FirefoxLocalResolver {
-    resolve(host, { timeout = 10000 } = {}) {
+    resolve(host, { timeout = DNS_TIMEOUT } = {}) {
         let ipDeferred = new Deferred();
         browser.dns
             .resolve(host)
@@ -28,7 +29,7 @@ export class FirefoxLocalResolver {
  *
  */
 export class ChromeLocalResolver {
-    resolve(host, { timeout = 10000 } = {}) {
+    resolve(host, { timeout = DNS_TIMEOUT } = {}) {
         let ipDeferred = new Deferred();
 
         // Set onProxyError listener

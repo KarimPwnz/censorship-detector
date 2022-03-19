@@ -1,6 +1,7 @@
 import { fetchTimeout, rand, isObjEmpty } from "../utils";
 import Deferred from "../deferred";
 import { browserInfo } from "./global";
+import { FETCHER_TIMEOUT } from "./global";
 
 export default class Fetcher {
     constructor() {
@@ -22,7 +23,7 @@ export default class Fetcher {
         url,
         {
             options = {},
-            timeout = 10000,
+            timeout = FETCHER_TIMEOUT,
             captureDetails = false,
             bypassCache = false,
         } = {}

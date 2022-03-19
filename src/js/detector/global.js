@@ -20,3 +20,8 @@ export function hasIgnoredOrigin(details) {
         browserInfo.name == "firefox" ? "originUrl" : "initiator";
     return ignoredOrigins.has(details[targetProperty]);
 }
+
+/* Timeouts */
+
+export const DNS_TIMEOUT = 10000;
+export const FETCHER_TIMEOUT = 10000;

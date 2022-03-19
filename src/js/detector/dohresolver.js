@@ -2,6 +2,7 @@ import Fetcher from "./fetcher";
 import dnsPacket from "dns-packet";
 import base64url from "base64url";
 import isIp from "is-ip";
+import { DNS_TIMEOUT } from "./global";
 
 export default class DoHResolver {
     constructor(fetcher = null) {
@@ -13,7 +14,7 @@ export default class DoHResolver {
         {
             server = "https://cloudflare-dns.com/dns-query",
             type = "A",
-            timeout = 10000,
+            timeout = DNS_TIMEOUT,
         } = {}
     ) {
         if (isIp(host)) {
