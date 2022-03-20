@@ -8,6 +8,8 @@ const { isLocallyUp, isUp } = require("./common");
  * 2. Make sure that neither IP filtering nor DNS filtering checks fail
  * 3. Check if host locally down over HTTPS
  *
+ * In other words, it relies on a process of elimination
+ * 
  * Shortcomings:
  * - Cannot detect HTTPS filtering if IP or DNS filtering exists
  */
