@@ -40,7 +40,7 @@ export default class Fetcher {
      * 
      * @param {string} url
      * @param {options} [options={}] - fetch options
-     * @param {int} [timeout=10000]
+     * @param {int} [timeout=FETCHER_TIMEOUT]
      * @param {boolean} [captureDetails=false] - whether to capture webRequest details
      * @param {boolean} [bypassCache=false]
      * @returns 
