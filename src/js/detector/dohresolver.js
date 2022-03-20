@@ -4,6 +4,11 @@ import base64url from "base64url";
 import isIp from "is-ip";
 import { DNS_TIMEOUT } from "./global";
 
+/**
+ * A DNS-over-HTTPS resolver
+ * 
+ * Caches results via its Fetcher
+ */
 export default class DoHResolver {
     constructor(fetcher = null) {
         this.fetcher = fetcher || new Fetcher();

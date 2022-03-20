@@ -3,6 +3,22 @@ import Deferred from "../deferred";
 import { browserInfo } from "./global";
 import { FETCHER_TIMEOUT } from "./global";
 
+
+/**
+ * A Fetcher that has a fetch(...) method; takes advantage of the webRequest API (https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/webRequest)
+ * 
+ * This is superior to the JavaScript fetch(...) function because it allows us to:
+ * - Send non-CORS-safelisted headers (like the "host" header)
+ * - Capture additional request details (like the specific net error)
+ *
+ * Additionally, this API caches response promises and supports timeouts
+ * 
+ * It works by sending a request with a X-Censorship-Detector header that contains an ID.
+ * The onBeforeSendHeaders listener matches the id of and removes the X-Censorship-Detector header 
+ * and saves the webRequest requestId, in addition to injecting the request headers. If the fetch call is 
+ * instructed to captureDetails, onCompleted and onErrorOccurred listeners are set-up to wait 
+ * for the specific requestId to match and to capture the webRequest details
+ */
 export default class Fetcher {
     constructor() {
         this.cacheStore = new Map();
@@ -19,6 +35,16 @@ export default class Fetcher {
         };
     }
 
+    /**
+     * Fetch a URL
+     * 
+     * @param {string} url
+     * @param {options} [options={}] - fetch options
+     * @param {int} [timeout=10000]
+     * @param {boolean} [captureDetails=false] - whether to capture webRequest details
+     * @param {boolean} [bypassCache=false]
+     * @returns 
+     */
     async fetch(
         url,
         {
@@ -65,8 +91,8 @@ export default class Fetcher {
             listeners.push(this._setOnBeforeSendHeaders(url, result, headers));
         }
         if (captureDetails) {
-            // Set onCompleted Listener
-            listeners.push(this._setOnCompleted(url, result));
+            // Set onCompleted and onErrorOccurred listeners
+            listeners.push(this._setOnCompletedOrErrorOccurred(url, result));
         }
 
         // Send request
@@ -151,7 +177,7 @@ export default class Fetcher {
         return specInfo;
     }
 
-    _setOnCompleted(url, result) {
+    _setOnCompletedOrErrorOccurred(url, result) {
         let requestDetailsDeferred = new Deferred();
 
         // Set listener
