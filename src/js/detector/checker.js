@@ -15,7 +15,7 @@ export default class Checker {
      * @param {Check} check - check to run
      * @param {webRequestEvent} event - event to run check on
      * @param {boolean} [bypassCache=false]
-     * @returns 
+     * @returns {Promise} a check result promise
      */
     check(check, event, { bypassCache = false } = {}) {
         let cachedCheck = this.cacheStore.get(check.meta.name) || {};
