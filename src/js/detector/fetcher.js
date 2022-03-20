@@ -12,7 +12,11 @@ import { browserInfo } from "./global";
  *
  * Additionally, this API caches response promises and supports timeouts
  * 
- * It works by sending a request with a X-Censorship-Detector header that contains an ID. The onBeforeSendHeaders listener matches and removes the X-Censorship-Detector header and saves the requestId, in addition to injecting the request headers. If the fetch call is instructed to captureDetails, onCompleted and onErrorOccurred listeners are set-up to wait for the specific requestId to match and to capture the webRequest details
+ * It works by sending a request with a X-Censorship-Detector header that contains an ID.
+ * The onBeforeSendHeaders listener matches and removes the X-Censorship-Detector header and 
+ * saves the requestId, in addition to injecting the request headers. If the fetch call is 
+ * instructed to captureDetails, onCompleted and onErrorOccurred listeners are set-up to wait 
+ * for the specific requestId to match and to capture the webRequest details
  */
 export default class Fetcher {
     constructor() {
