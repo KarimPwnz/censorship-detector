@@ -10,9 +10,9 @@ https://user-images.githubusercontent.com/14217083/159095602-641cabb2-de13-407d-
 
 ## The story
 
-In 2021, the Lebanese government blocked local exchange rate websites. Some reports said that the internet service providers were using DNS filtering (i.e. blocking the websites by tampering the DNS answers). However, upon testing my own network, I found something peculiar: even when I changed my local DNS resolver, the websites were still blocked. Ofcourse, one can imagine how that would happen over HTTP—a censor would filter based on the host header. Yet, the websites were also blocked over HTTPS! Upon further inspection, it turned out to be SNI (Server Name Indication) filtering; in other words, my ISP was filtering by the SNI extension in the TLS handshake.
+In 2021, the Lebanese government blocked local exchange rate websites. Some reports said that the internet service providers were using DNS filtering (i.e. blocking the websites by tampering the DNS answers). However, upon testing my own network, I found something peculiar: even when I changed my local DNS resolver, the websites were still blocked. Ofcourse, one can imagine how that would happen over HTTP—a censor would filter based on the host header. Yet, the websites were also blocked over HTTPS! Upon further inspection, it turned out to be SNI (Server Name Indication) filtering; in other words, my ISP was filtering the requested hostname in the TLS handshake.
 
-I wondered what other censorship methods Lebanese ISPs were using. I got in touch with friends on other networks, but there was a problem: running traditional censorship detection tools was either too technical or yielded inaccurate results. Hence this extension! 
+I wondered what other censorship methods Lebanese ISPs were using. I got in touch with friends on other networks, but there was a problem: running traditional censorship detection tools was either too technical or yielded inaccurate results. Hence this extension!
 
 The extension can currently detect DNS, HTTP, HTTPS, and IP filtering. It is built with a modular architecture, allowing for other checks to be added in the future. Do note that it is highly experimental and relies on testing the limits of some browser extension APIs, so use it critically.
 
